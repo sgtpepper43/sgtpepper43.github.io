@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8"> 
+    <title>Product</title>
+  </head>
+  <body>
+    <h1>Product Suggestions</h1>
+    Use the form below to make suggestions
+    <br />
+    <br />
+    <form name="suggestionBox" onsubmit="javascript:onSubmit">
+      <textarea rows="8" style="width: 400px" name="text"></textarea>
+      <br />
+      <button>Submit</Button>
+    </form>
+    <script type="text/javascript">
+      function submit() {
+        const suggestion = document.forms.suggestionBox.text.value;
+        document.forms.suggestionBox.text.value = '';
+
+        if (Math.random() > 0.7) {
+          alert('Thank you for your suggestion!');
+        } else {
+          alert(`We're already in the process of considering ${suggestion}, but thanks!`);
+        }
+      }
+
+      document.forms.suggestionBox.onkeypress = e => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          e.stopPropagation();
+          submit();
+        }
+      }
+
+      document.forms.suggestionBox.onsubmit = e => {
+        e.preventDefault();
+        e.stopPropagation();
+        submit();
+      }
+    </script>
+  </body>
+</html>
