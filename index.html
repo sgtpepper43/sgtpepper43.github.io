@@ -13,6 +13,7 @@
       document.onclick = () => {
         if (started) return;
         started = true;
+        const audio = document.getElementById('background-music');
         audio.volume = 0.2;
         audio.play();
       }
