@@ -7,6 +7,15 @@
       window.subscribe = function() {
         alert('You have been subscribed!');
       }
+
+      let started = false;
+
+      document.onclick = () => {
+        if (started) return;
+        started = true;
+        audio.volume = 0.2;
+        audio.play();
+      }
     </script>
   </head>
   <body>
@@ -25,6 +34,6 @@
     <br />
     Here's a twitter <a href="https://twitter.com/@sgtpepper43">@sgtpepper43</a>
     <br />
-    <audio src="assets/ambience.mp3" loop autoplay controls />
+    <audio src="assets/ambience.mp3" id="background-music" loop controls />
   </body>
 </html>
