@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Bells</title>
+  <style>
+    button {
+      width: auto;
+      font-size: 20px;
+      padding: 12px 16px;
+      cursor: pointer;
+      background-color: #efefef;
+      border-radius: 0;
+      border: 1px solid #777777;
+      transition: 100ms;
+    }
+
+    button:hover {
+      background-color: #dddddd;
+    }
+
+    button:active {
+      background-color: #cccccc;
+    }
+
+    section {
+      display: flex;
+      justify-content: center;
+      margin-top: 24px;
+    }
+
+    .non-standard {
+      background-color: #bbbbbb;
+    }
+
+    .non-standard:hover {
+      background-color: #aaaaaa;
+    }
+
+    .non-standard:active {
+      background-color: #999999;
+    }
+
+    input[type="checkbox"] {
+      cursor: pointer;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .notes button {
+      flex: 1 1 0px;
+      min-width: 0;
+    }
+
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .options label {
+      display: flex;
+      gap: 8px;
+    }
+
+    .faders {
+      display: flex;
+    }
+
+    .faders label {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .faders input[type="range"] {
+      appearance: slider-vertical;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <form name="notes">
+      <div class="buttons notes">
+        <button type="button" name="E0" class="non-standard">E0</button>
+        <button type="button" name="E1" class="non-standard">E1</button>
+        <button type="button" name="E2" class="non-standard">E2</button>
+        <button type="button" name="B2" class="non-standard">B2</button>
+        <button type="button" name="C#3" class="non-standard">C#3</button>
+        <button type="button" name="D#3" class="non-standard">D#3</button>
+      </div>
+      <div class="buttons notes">
+        <button type="button" name="E3">E3</button>
+        <button type="button" name="F#3" class="non-standard">F#3</button>
+
+        <button type="button" name="G#3" class="non-standard">G#3</button>
+
+        <button type="button" name="A3" class="non-standard">A3</button>
+        <button type="button" name="B3">B3</button>
+        <button type="button" name="C#4" class="non-standard">C#4</button>
+        <button type="button" name="D#4" class="non-standard">D#4</button>
+      </div>
+      <div class="buttons notes">
+        <button type="button" name="E4">E4</button>
+        <button type="button" name="F#4">F#4</button>
+        <button type="button" name="G#4">G#4</button>
+        <button type="button" name="A4" class="non-standard">A4</button>
+        <button type="button" name="B4" class="non-standard">B4</button>
+        <button type="button" name="C#5" class="non-standard">C#5</button>
+        <button type="button" name="D#5" class="non-standard">D#5</button>
+      </div>
+      <div class="buttons notes">
+        <button type="button" name="E5" class="non-standard">E5</button>
+        <button type="button" name="F#5" class="non-standard">F#5</button>
+        <button type="button" name="G#5" class="non-standard">G#5</button>
+        <button type="button" name="A5" class="non-standard">A5</button>
+        <button type="button" name="B5" class="non-standard">B5</button>
+        <button type="button" name="E6" class="non-standard">E6</button>
+      </div>
+    </form>
+  </section>
+
+  <section>
+    <form name="quarters">
+      <div class="buttons">
+        <button type="button" name="00">00</button>
+        <button type="button" name="15">15</button>
+        <button type="button" name="30">30</button>
+        <button type="button" name="45">45</button>
+      </div>
+    </form>
+  </section>
+
+  <section>
+    <form name="hours">
+      <div class="buttons">
+        <button type="button" name="1">1</button>
+        <button type="button" name="2">2</button>
+        <button type="button" name="3">3</button>
+        <button type="button" name="4">4</button>
+        <button type="button" name="5">5</button>
+        <button type="button" name="6">6</button>
+        <button type="button" name="7">7</button>
+        <button type="button" name="8">8</button>
+        <button type="button" name="9">9</button>
+        <button type="button" name="10">10</button>
+        <button type="button" name="11">11</button>
+        <button type="button" name="12">12</button>
+      </div>
+    </form>
+  </section>
+
+  <section>
+    <form name="options">
+      <div class="options">
+        <label>Hour Chime
+          <input type="checkbox" name="hourChime" checked />
+        </label>
+        <label>Quarters Chime
+          <input type="checkbox" name="quartersChime" checked />
+        </label>
+        <div class="faders">
+          <label>
+            <input type="range" min="0" max="1.5" name="volume" value="0.7" step="0.01" />
+            Volume
+          </label>
+          <label>
+            <input type="range" min="0" max="1" name="reverb" value="1" step="0.01" />
+            Reverb
+          </label>
+          <label>
+            <input type="range" min="0.2" max="1" name="damping" value="1" step="0.01" />
+            Bell Damping
+          </label>
+        </div>
+      </div>
+    </form>
+  </section>
+
+  <form name="init">
+    <section>
+      <button type="button" name="init">Init</button>
+    </section>
+    <section>
+      <label>Initialized
+        <input type="checkbox" name="initialized" disabled />
+      </label>
+    </section>
+  </form>
+  <script type="text/javascript">
+    let audioCtx;
+    let damping = 1;
+
+    const rootFreq = 164.81;
+    const quarterNoteLength = 700;
+
+    const keyCodeToNote = {
+      AltLeft: "E0",
+      Space: "E1",
+      ShiftLeft: "E2",
+      KeyZ: "B2",
+      KeyX: "C#3",
+      KeyC: "D#3",
+      KeyV: "E3",
+      KeyB: "F#3",
+      KeyN: "G#3",
+      KeyM: "A3",
+      Comma: "B3",
+      Period: "C#4",
+      Slash: "D#4",
+      ShiftRight: "E4",
+      KeyA: "E3",
+      KeyS: "F#3",
+      KeyD: "G#3",
+      KeyF: "A3",
+      KeyG: "B3",
+      KeyH: "C#4",
+      KeyJ: "D#4",
+      KeyK: "E4",
+      KeyL: "F#4",
+      Semicolon: "G#4",
+      Quote: "A4",
+      KeyQ: "G#3",
+      KeyW: "B3",
+      KeyE: "C#4",
+      KeyR: "D#4",
+      KeyT: "E4",
+      KeyY: "F#4",
+      KeyU: "G#4",
+      KeyI: "A4",
+      KeyO: "B4",
+      KeyP: "C#5",
+      BracketLeft: "D#5",
+      BracketRight: "E5",
+      Backslash: "F#5",
+      Backquote: "B3",
+      Digit1: "C#4",
+      Digit2: "D#4",
+      Digit3: "E4",
+      Digit4: "F#4",
+      Digit5: "G#4",
+      Digit6: "A4",
+      Digit7: "B4",
+      Digit8: "C#5",
+      Digit9: "D#5",
+      Digit0: "E5",
+      Minus: "F#5",
+      Equal: "G#5",
+      Backspace: "A5",
+      ControlRight: "B5",
+      AltRight: "E6"
+    };
+
+    const changes = [
+      ["G#4", "F#4", "E4", "B3"],
+      ["E4", "G#4", "F#4", "B3"],
+      ["E4", "F#4", "G#4", "E4"],
+      ["G#4", "E4", "F#4", "B3"],
+      ["B3", "F#4", "G#4", "E4"]
+    ];
+
+    const quarters = {
+      15: [changes[0]],
+      30: [changes[1], changes[2]],
+      45: [changes[3], changes[4], changes[0]],
+      "00": [changes[1], changes[2], changes[3], changes[4]]
+    };
+
+    const quartersTimeouts = {};
+
+    let notes = {};
+
+    function dampingSlider(position) {
+      // position will be between 0 and 100
+      var minp = 0;
+      var maxp = 1;
+
+      // The result should be between 100 an 10000000
+      var minv = Math.log(0.01);
+      var maxv = Math.log(1);
+
+      // calculate adjustment factor
+      var scale = (maxv - minv) / (maxp - minp);
+
+      return Math.exp(minv + scale * (position - minp));
+    }
+
+    async function sleep(ms) {
+      return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+      });
+    }
+
+    function impulseResponse(duration, decay, reverse) {
+      const sampleRate = audioCtx.sampleRate;
+      const length = sampleRate * duration;
+      const impulse = audioCtx.createBuffer(2, length, sampleRate);
+      const impulseL = impulse.getChannelData(0);
+      const impulseR = impulse.getChannelData(1);
+
+      if (!decay) decay = 2.0;
+      for (let i = 0; i < length; i++) {
+        const n = reverse ? length - i : i;
+        impulseL[i] = (Math.random() * 2 - 1) * Math.pow(1 - n / length, decay);
+        impulseR[i] = (Math.random() * 2 - 1) * Math.pow(1 - n / length, decay);
+      }
+      return impulse;
+    }
+
+    class Bell {
+      constructor(frequency, pan = 0) {
+        const panNode = audioCtx.createStereoPanner();
+        panNode.pan.setValueAtTime(pan, audioCtx.currentTime);
+
+        this.panNode = panNode;
+
+        const gainNode = new GainNode(audioCtx);
+        gainNode.connect(panNode);
+        gainNode.gain.value = 0;
+
+        const modGainNode = new GainNode(audioCtx);
+        modGainNode.connect(gainNode);
+        modGainNode.gain.value = 0;
+
+        const subGainNode = new GainNode(audioCtx);
+        subGainNode.connect(panNode);
+        subGainNode.gain.value = 0;
+
+        const strikerGainNode = new GainNode(audioCtx);
+        strikerGainNode.connect(panNode);
+        strikerGainNode.gain.value = 0;
+
+        this.gainNode = gainNode;
+        this.subGainNode = subGainNode;
+        this.strikerGainNode = strikerGainNode;
+
+        createOsc(frequency, 2, [gainNode, modGainNode]);
+        createOsc(frequency, 3.0102, [gainNode, modGainNode]);
+        createOsc(frequency, 4.1658, [gainNode, modGainNode]);
+        createOsc(frequency, 5.4317, [gainNode, modGainNode]);
+        createOsc(frequency, 6.7974, [gainNode, modGainNode]);
+        createOsc(frequency, 8.2159, [gainNode, modGainNode]);
+
+        createOsc(frequency, 2.00606, [subGainNode]);
+        createOsc(frequency, 1, [subGainNode]);
+
+        const modulatorGainNode = new GainNode(audioCtx);
+
+        const carrier = createOsc(frequency, 2, [strikerGainNode]);
+        const modulator = createOsc(frequency, 0.6656, [modulatorGainNode]);
+        modulatorGainNode.connect(carrier.frequency);
+        modulatorGainNode.gain.value = 100;
+
+        const lfoGainNode = new GainNode(audioCtx);
+        lfoGainNode.connect(modGainNode.gain);
+        lfoGainNode.gain.value = 0.1;
+        const lfo = createOsc(3.63, 1, [lfoGainNode]);
+      }
+
+      connect(dest) {
+        this.panNode.connect(dest);
+        return this;
+      }
+
+      ring() {
+        triggerEnv(this.gainNode.gain, 0.1, [
+          [1, 0.005],
+          [0.36, 0.476 * damping],
+          [0, 12.8 * damping, "exp"]
+        ]);
+        triggerEnv(this.strikerGainNode.gain, 0.06, [
+          [1, 0.005],
+          [0.36, 0.476 * damping],
+          [0, 10.7 * damping, "exp"]
+        ]);
+        triggerEnv(this.subGainNode.gain, 0.05, [
+          [1, 1.5 * damping],
+          [0.5, 2 * damping],
+          [0, 10.8 * damping, "exp"]
+        ]);
+      }
+    }
+
+    function triggerEnv(gain, value, envs) {
+      gain.cancelScheduledValues(audioCtx.currentTime);
+      gain.setValueAtTime(0, audioCtx.currentTime);
+      let offset = 0;
+
+      envs.forEach(([mult, time, type]) => {
+        if (type === "exp") {
+          gain.exponentialRampToValueAtTime(
+            value * mult + 0.0000001,
+            audioCtx.currentTime + offset + time
+          );
+        } else {
+          gain.linearRampToValueAtTime(
+            value * mult,
+            audioCtx.currentTime + offset + time
+          );
+        }
+
+        offset += time;
+      });
+    }
+
+    function createOsc(freq, mult, destinations) {
+      const osc = audioCtx.createOscillator();
+      osc.type = "sine";
+      osc.start();
+
+      destinations.forEach((dest) => osc.connect(dest));
+      osc.frequency.setValueAtTime(freq * mult, audioCtx.currentTime);
+
+      return osc;
+    }
+
+    let chiming = false;
+
+    function checkClock() {
+      const now = new Date();
+      const minutes = now.getMinutes();
+
+      if (minutes === 0 || minutes === 15 || minutes === 30 || minutes === 45) {
+        if (chiming) return;
+
+        chiming = true;
+
+        if (minutes === 0) {
+          if (!document.options.hourChime.checked) return;
+          let hours = now.getHours() % 12;
+          if (hours === 0) hours = 12;
+          console.log("Chiming Hour", hours);
+          ringHour(hours);
+        } else {
+          if (!document.options.quartersChime.checked) return;
+          console.log("Chiming Quarters", minutes);
+          ringQuarters(quarters[minutes]);
+        }
+      } else {
+        chiming = false;
+      }
+    }
+
+    let masterGain;
+    let reverbGain;
+
+    function init() {
+      setInterval(checkClock, 200);
+
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+      masterGain = new GainNode(audioCtx);
+      masterGain.connect(audioCtx.destination);
+      masterGain.gain.value = 0.7;
+
+      reverbGain = new GainNode(audioCtx);
+      reverbGain.connect(masterGain);
+      reverbGain.gain.value = 1;
+
+      const reverb = audioCtx.createConvolver();
+      reverb.buffer = impulseResponse(15, 8, false);
+      reverb.connect(reverbGain);
+
+      const bellsGain = new GainNode(audioCtx);
+      bellsGain.connect(reverb);
+      bellsGain.connect(masterGain);
+      bellsGain.gain.value = 1;
+
+      notes = {
+        E6: new Bell(rootFreq * 8, 0).connect(bellsGain),
+        B5: new Bell((rootFreq * 4 * 3) / 2, -0.333).connect(bellsGain),
+        A5: new Bell((rootFreq * 4 * 4) / 3, 0.666).connect(bellsGain),
+        "G#5": new Bell((rootFreq * 4 * 5) / 4, 0.333).connect(bellsGain),
+        "F#5": new Bell((rootFreq * 4 * 9) / 8, -0.666).connect(bellsGain),
+        E5: new Bell(rootFreq * 4, 0).connect(bellsGain),
+        "D#5": new Bell((rootFreq * 2 * 15) / 8, 1).connect(bellsGain),
+        "C#5": new Bell((rootFreq * 2 * 5) / 3, -1).connect(bellsGain),
+        B4: new Bell((rootFreq * 2 * 3) / 2, -0.333).connect(bellsGain),
+        A4: new Bell((rootFreq * 2 * 4) / 3, 0.666).connect(bellsGain),
+        "G#4": new Bell((rootFreq * 2 * 5) / 4, 0.333).connect(bellsGain),
+        "F#4": new Bell((rootFreq * 2 * 9) / 8, -0.666).connect(bellsGain),
+        E4: new Bell(rootFreq * 2, 0.666).connect(bellsGain),
+        "D#4": new Bell((rootFreq * 15) / 8, 1).connect(bellsGain),
+        "C#4": new Bell((rootFreq * 5) / 3, -1).connect(bellsGain),
+        B3: new Bell((rootFreq * 3) / 2, -0.333).connect(bellsGain),
+        A3: new Bell((rootFreq * 4) / 3, 0.666).connect(bellsGain),
+        "G#3": new Bell((rootFreq * 5) / 4, 0.333).connect(bellsGain),
+        "F#3": new Bell((rootFreq * 9) / 8, -0.666).connect(bellsGain),
+        E3: new Bell(rootFreq, 0).connect(bellsGain),
+        "D#3": new Bell((rootFreq * 15) / 8 / 2, 1).connect(bellsGain),
+        "C#3": new Bell((rootFreq * 5) / 3 / 2, -1).connect(bellsGain),
+        B2: new Bell((rootFreq * 3) / 2 / 2, -0.333).connect(bellsGain),
+        E2: new Bell(rootFreq / 2, 0).connect(bellsGain),
+        E1: new Bell(rootFreq / 4, 0).connect(bellsGain),
+        E0: new Bell(rootFreq / 8, 0).connect(bellsGain)
+      };
+
+      document.init.initialized.checked = true;
+    }
+
+    function ring(note) {
+      if (!audioCtx) init();
+
+      console.log("ringing", note);
+      notes[note].ring();
+    }
+
+    async function ringQuarters(set) {
+      if (set.length === 0) return;
+      const [notes, ...rest] = set;
+      await ringNotes(notes);
+      return ringQuarters(rest);
+    }
+
+    async function ringNotes(notes) {
+      if (notes.length === 0) return;
+      const [note, ...rest] = notes;
+      ring(note);
+
+      if (rest.length === 0) {
+        await sleep(quarterNoteLength * 2);
+      } else {
+        await sleep(quarterNoteLength);
+      }
+      return ringNotes(rest);
+    }
+
+    async function ringHour(hour) {
+      await ringQuarters(quarters["00"]);
+      await sleep(quarterNoteLength * 2);
+
+      for (let i = 0; i < hour; i++) {
+        ring("E3");
+        await sleep(quarterNoteLength * 3);
+      }
+    }
+
+    function onKeyDown(e) {
+      const note = keyCodeToNote[e.code];
+      if (!note) return;
+      ring(note);
+      e.preventDefault();
+    }
+
+    window.addEventListener("load", () => {
+      for (let form of document.forms) {
+        form.onsubmit = (e) => e.preventDefault();
+      }
+
+      for (let element of document.notes.elements) {
+        const note = element.name;
+        element.onclick = () => ring(note);
+      }
+
+      for (let element of document.quarters.elements) {
+        const set = quarters[element.name];
+        element.onclick = () => ringQuarters(set);
+      }
+
+      for (let element of document.hours.elements) {
+        const hour = parseInt(element.name);
+        element.onclick = () => ringHour(hour);
+      }
+
+      document.init.init.onclick = () => init();
+
+      document.options.volume.oninput = (e) => {
+        if (!masterGain) init();
+        masterGain.gain.value = e.target.value;
+      };
+
+      document.options.reverb.oninput = (e) => {
+        if (!reverbGain) init();
+        reverbGain.gain.value = e.target.value;
+      };
+
+      document.options.damping.oninput = (e) => {
+        damping = dampingSlider(e.target.value);
+      };
+
+      document.addEventListener("keydown", onKeyDown);
+    });
+
+  </script>
+</body>
+
+</html>
