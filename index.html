@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8"> 
-    <title>Trevor Fenn!</title>
-    <script type="text/javascript">
-      window.subscribe = function() {
-        alert('You have been subscribed!');
-      }
 
-      let started = false;
+<head>
+  <meta charset="UTF-8">
+  <title>Trevor Fenn!</title>
+  <script type="text/javascript">
+    window.subscribe = function () {
+      alert('You have been subscribed!');
+    }
 
-      document.onclick = () => {
-        if (started) return;
-        started = true;
-        const audio = document.getElementById('background-music');
-        audio.volume = 0.2;
-        audio.play();
-      }
-    </script>
-  </head>
-  <body>
-    <h1>Trevor Fenn</h1>
-    Hello!
-    This website looks like this on purpose!
-    <br />
-    <img
-      src="https://media.giphy.com/media/xT5LMIkPvHDbe46MI8/giphy.gif"
-      alt="Did you do that on porpoise?"
-      title="Did you do that on porpoise?"
-    />
-    <br />
-    <a href="javascript:subscribe()">Subscribe</a>
-    <br />
-    <br />
-    <audio src="assets/ambience.mp3" id="background-music" loop controls></audio>
-    <audio src="assets/ambience2.mp3" loop controls></audio>
-  </body>
+    let started = false;
+
+    document.onclick = () => {
+      if (started) return;
+      started = true;
+      const audio = document.getElementById('background-music');
+      audio.volume = 0.2;
+      audio.play();
+    }
+  </script>
+</head>
+
+<body>
+  <h1>Trevor Fenn</h1>
+  Hello!
+  This website looks like this on purpose!
+  <br />
+  <img src="https://media.giphy.com/media/xT5LMIkPvHDbe46MI8/giphy.gif" alt="Did you do that on porpoise?"
+    title="Did you do that on porpoise?" />
+  <br />
+  <a href="javascript:subscribe()">Subscribe</a>
+  <br />
+  <br />
+  <audio src="assets/ambience.mp3" id="background-music" loop controls></audio>
+  <audio src="assets/ambience2.mp3" loop controls></audio>
+  <audio src="assets/134D6FD.mp3" loop controls></audio>
+</body>
+
 </html>
