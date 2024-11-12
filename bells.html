@@ -79,6 +79,132 @@
     .faders input[type="range"] {
       appearance: slider-vertical;
     }
+
+    .flip-clock {
+      display: flex;
+      gap: 4px;
+    }
+
+    .flip-slot {
+      position: relative;
+      width: 42px;
+      height: 64px;
+    }
+
+    .flip-digit {
+      display: flex;
+      transition: transform 1s;
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      width: 42px;
+      height: 64px;
+      font-size: 36px;
+      color: white;
+      justify-content: center;
+      align-items: center;
+      font-family: monospace;
+      position: absolute;
+      transform: translateZ(0px);
+    }
+
+    .flip-digit:not(:has(.flip-digit-top-container)) {
+      background: #444444;
+    }
+
+    .flip-digit-wide {
+      font-size: 24px;
+      width: 52px;
+    }
+
+    .flip-digit-top-container,
+    .flip-digit-bottom-container {
+      height: 50%;
+      overflow: hidden;
+      position: absolute;
+      width: 100%;
+      background: #444444;
+      transform: translateZ(0px);
+    }
+
+    .flip-digit-top-container {
+      top: 0;
+      transform-origin: bottom;
+    }
+
+    .flip-digit-bottom-container {
+      bottom: 0;
+      transform-origin: top;
+    }
+
+    .flip-digit-top,
+    .flip-digit-bottom {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      line-height: 64px;
+    }
+
+    .flip-digit-top {
+      top: 0;
+    }
+
+    .flip-digit-bottom {
+      bottom: 0;
+    }
+
+    @keyframes top-flip-down-digit {
+      0% {
+        z-index: 24;
+      }
+
+      99% {
+        z-index: 24;
+      }
+
+      100% {
+        z-index: 0;
+      }
+    }
+
+    @keyframes top-flip-down {
+      from {
+        transform: rotateX(0deg)
+      }
+
+      to {
+        transform: rotateX(90deg)
+      }
+    }
+
+    @keyframes bottom-flip-down {
+      from {
+        transform: rotateX(90deg)
+      }
+
+      to {
+        transform: rotateX(0deg)
+      }
+    }
+
+    .flip-digit:nth-last-child(2) {
+      animation-name: top-flip-down-digit;
+      animation-duration: 100ms;
+      animation-timing-function: ease-in;
+    }
+
+    .flip-digit:nth-last-child(2) .flip-digit-top-container {
+      animation-name: top-flip-down;
+      animation-duration: 100ms;
+      animation-timing-function: ease-in;
+    }
+
+    .flip-digit:nth-last-child(1) .flip-digit-bottom-container {
+      animation-name: bottom-flip-down;
+      animation-delay: 100ms;
+      animation-duration: 100ms;
+      animation-timing-function: ease-out;
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/hacktimer@1.1.3/HackTimerWorker.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/hacktimer@1.1.3/HackTimer.min.js"></script>
@@ -181,6 +307,231 @@
         </div>
       </div>
     </form>
+  </section>
+
+  <section class="flip-clock" id="flip-clock">
+    <div data-digit="0" class="flip-slot">
+      <div class="flip-digit">1</div>
+      <div class="flip-digit">0</div>
+    </div>
+    <div data-digit="1" class="flip-slot">
+      <div class="flip-digit">1</div>
+      <div class="flip-digit">2</div>
+      <div class="flip-digit">3</div>
+      <div class="flip-digit">4</div>
+      <div class="flip-digit">5</div>
+      <div class="flip-digit">6</div>
+      <div class="flip-digit">7</div>
+      <div class="flip-digit">8</div>
+      <div class="flip-digit">9</div>
+      <div class="flip-digit">0</div>
+    </div>
+    <div class="flip-divider"></div>
+    <div data-digit="2" class="flip-slot">
+      <div class="flip-digit">1</div>
+      <div class="flip-digit">2</div>
+      <div class="flip-digit">3</div>
+      <div class="flip-digit">4</div>
+      <div class="flip-digit">5</div>
+      <div class="flip-digit">0</div>
+    </div>
+    <div data-digit="3" class="flip-slot">
+      <div class="flip-digit">1</div>
+      <div class="flip-digit">2</div>
+      <div class="flip-digit">3</div>
+      <div class="flip-digit">4</div>
+      <div class="flip-digit">5</div>
+      <div class="flip-digit">6</div>
+      <div class="flip-digit">7</div>
+      <div class="flip-digit">8</div>
+      <div class="flip-digit">9</div>
+      <div class="flip-digit">0</div>
+    </div>
+    <div class="flip-divider"></div>
+    <div data-digit="4" class="flip-slot">
+      <div class="flip-digit">1</div>
+      <div class="flip-digit">2</div>
+      <div class="flip-digit">3</div>
+      <div class="flip-digit">4</div>
+      <div class="flip-digit">5</div>
+      <div class="flip-digit">0</div>
+    </div>
+    <div data-digit="5" class="flip-slot">
+      <div class="flip-digit">1</div>
+      <div class="flip-digit">2</div>
+      <div class="flip-digit">3</div>
+      <div class="flip-digit">4</div>
+      <div class="flip-digit">5</div>
+      <div class="flip-digit">6</div>
+      <div class="flip-digit">7</div>
+      <div class="flip-digit">8</div>
+      <div class="flip-digit">9</div>
+      <div class="flip-digit">0</div>
+    </div>
+    <div class="flip-divider2"></div>
+    <div data-digit="6" class="flip-slot flip-digit-wide">
+      <div class="flip-digit flip-digit-wide">AM</div>
+      <div class="flip-digit flip-digit-wide">PM</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Timer</h2>
+  </section>
+
+  <section class="flip-clock" id="timer-flip-clock">
+    <div data-digit="0" class="flip-slot">
+      <div class="flip-digit">9</div>
+      <div class="flip-digit">8</div>
+      <div class="flip-digit">7</div>
+      <div class="flip-digit">6</div>
+      <div class="flip-digit">5</div>
+      <div class="flip-digit">4</div>
+      <div class="flip-digit">3</div>
+      <div class="flip-digit">2</div>
+      <div class="flip-digit">1</div>
+      <div class="flip-digit">0</div>
+    </div>
+    <div data-digit="1" class="flip-slot">
+      <div class="flip-digit">9</div>
+      <div class="flip-digit">8</div>
+      <div class="flip-digit">7</div>
+      <div class="flip-digit">6</div>
+      <div class="flip-digit">5</div>
+      <div class="flip-digit">4</div>
+      <div class="flip-digit">3</div>
+      <div class="flip-digit">2</div>
+      <div class="flip-digit">1</div>
+      <div class="flip-digit">0</div>
+    </div>
+    <div class="flip-divider"></div>
+    <div data-digit="2" class="flip-slot">
+      <div class="flip-digit">5</div>
+      <div class="flip-digit">4</div>
+      <div class="flip-digit">3</div>
+      <div class="flip-digit">2</div>
+      <div class="flip-digit">1</div>
+      <div class="flip-digit">0</div>
+    </div>
+    <div data-digit="3" class="flip-slot">
+      <div class="flip-digit">9</div>
+      <div class="flip-digit">8</div>
+      <div class="flip-digit">7</div>
+      <div class="flip-digit">6</div>
+      <div class="flip-digit">5</div>
+      <div class="flip-digit">4</div>
+      <div class="flip-digit">3</div>
+      <div class="flip-digit">2</div>
+      <div class="flip-digit">1</div>
+      <div class="flip-digit">0</div>
+    </div>
+    <div class="flip-divider"></div>
+    <div data-digit="4" class="flip-slot">
+      <div class="flip-digit">5</div>
+      <div class="flip-digit">4</div>
+      <div class="flip-digit">3</div>
+      <div class="flip-digit">2</div>
+      <div class="flip-digit">1</div>
+      <div class="flip-digit">0</div>
+    </div>
+    <div data-digit="5" class="flip-slot">
+      <div class="flip-digit">9</div>
+      <div class="flip-digit">8</div>
+      <div class="flip-digit">7</div>
+      <div class="flip-digit">6</div>
+      <div class="flip-digit">5</div>
+      <div class="flip-digit">4</div>
+      <div class="flip-digit">3</div>
+      <div class="flip-digit">2</div>
+      <div class="flip-digit">1</div>
+      <div class="flip-digit">0</div>
+    </div>
+  </section>
+
+  <form name="timer">
+
+    <section>
+      <div class="buttons">
+        <button type="button" name="start">Start</button>
+        <button type="button" name="pause">Pause</button>
+        <button type="button" name="reset">Reset</button>
+        <button type="button" name="clear">Clear</button>
+      </div>
+
+    </section>
+    <section>
+      <div class="buttons">
+        <button type="button" name="-1s">-1s</button>
+        <button type="button" name="-5s">-5s</button>
+        <button type="button" name="-10s">-10s</button>
+        <button type="button" name="-15s">-15s</button>
+        <button type="button" name="-30s">-30s</button>
+        <button type="button" name="-60s">-60s</button>
+      </div>
+    </section>
+    <section>
+      <div class="buttons">
+        <button type="button" name="-5m">-5m</button>
+        <button type="button" name="-10m">-10m</button>
+        <button type="button" name="-15m">-15m</button>
+        <button type="button" name="-30m">-30m</button>
+        <button type="button" name="-60m">-60m</button>
+      </div>
+    </section>
+    <section>
+      <div class="buttons">
+        <button type="button" name="+1s">+1s</button>
+        <button type="button" name="+5s">+5s</button>
+        <button type="button" name="+10s">+10s</button>
+        <button type="button" name="+15s">+15s</button>
+        <button type="button" name="+30s">+30s</button>
+        <button type="button" name="+60s">+60s</button>
+      </div>
+    </section>
+    <section>
+      <div class="buttons">
+        <button type="button" name="+5m">+5m</button>
+        <button type="button" name="+10m">+10m</button>
+        <button type="button" name="+15m">+15m</button>
+        <button type="button" name="+30m">+30m</button>
+        <button type="button" name="+60m">+60m</button>
+      </div>
+    </section>
+
+    <section>
+      <select name="note">
+        <option value="E0">E0</option>
+        <option value="E1">E1</option>
+        <option value="E2">E2</option>
+        <option value="B2">B2</option>
+        <option value="C#3">C</option>
+        <option value="D#3">D</option>
+        <option value="E3">E3</option>
+        <option value="F#3">F</option>
+        <option value="G#3">G</option>
+        <option value="A3">A3</option>
+        <option value="B3">B3</option>
+        <option value="C#4">C</option>
+        <option value="D#4">D</option>
+        <option value="E4">E4</option>
+        <option value="F#4">F</option>
+        <option value="G#4">G</option>
+        <option value="A4">A4</option>
+        <option value="B4">B4</option>
+        <option value="C#5">C</option>
+        <option value="D#5">D</option>
+        <option value="E5">E5</option>
+        <option value="F#5">F</option>
+        <option value="G#5">G</option>
+        <option value="A5">A5</option>
+        <option value="B5">B5</option>
+        <option value="E6">E6</option>
+      </select>
+    </section>
+
+  </form>
+
+  <section>
   </section>
 
   <form name="init">
@@ -420,11 +771,199 @@
       return osc;
     }
 
+    const flipAnimationLength = 200;
+
+    class FlipClockDigit {
+      constructor(elem) {
+        this.digit = elem;
+        this.settingValue = false;
+        for (const el of elem.children) {
+          const value = el.textContent;
+          el.dataset['value'] = value;
+          el.innerHTML = `
+          <div class="flip-digit-top-container"><div class="flip-digit-top">${value}</div></div>
+          <div class="flip-digit-bottom-container"><div class="flip-digit-bottom">${value}</div></div>
+          `
+        };
+      }
+
+      value() {
+        return this.digit.lastElementChild.dataset['value']
+      }
+
+      cycle() {
+        this.digit.append(this.digit.firstElementChild)
+      }
+
+      setValue(value) {
+        if (this.settingValue) return;
+        this.settingValue = true;
+        this.cycleUntilValue(value);
+      }
+
+      async cycleUntilValue(value) {
+        if (this.value() === value) {
+          this.settingValue = false;
+          return;
+        }
+        this.cycle();
+        await sleep(flipAnimationLength);
+        this.cycleUntilValue(value)
+
+      }
+    }
+
+
+    class FlipClock {
+      constructor(elem) {
+        this.initialized = false;
+        this.digits = Array.from(elem.querySelectorAll('[data-digit]')).map((node, index) => new FlipClockDigit(node))
+        this.initialized = true;
+      }
+
+      setDigits(digits) {
+        digits.forEach((value, index) => {
+          this.digits[index].setValue(value)
+        })
+      }
+    }
+
+    const multipliers = { m: 60, s: 1, h: 60 * 60 }
+
+    function parseTimeButton(name) {
+      const result = /(\+|-)(\d+)(m|s|h)/.exec(name);
+      if (!result) return;
+      return result[2] * multipliers[result[3]] * (result[1] === '-' ? -1 : 1)
+    }
+
+    class Timer {
+      constructor(flipClock, timerForm) {
+        this.flipClock = new FlipClock(flipClock);
+        this.form = timerForm;
+        this.resetTimerValue = 0;
+        this.timerValue = 0;
+        this.endTime = null;
+        this.running = false;
+
+        for (const el of timerForm.elements) {
+          const time = parseTimeButton(el.name)
+          if (time) {
+            el.onclick = () => {
+              if (this.timerValue === 0) this.resetTimerValue = 0;
+              this.resetTimerValue = Math.max(0, this.resetTimerValue + time);
+              this.timerValue = Math.max(0, this.timerValue + time);
+
+              if (this.endTime) {
+                this.endTime.setSeconds(this.endTime.getSeconds() + time)
+              }
+
+              this.sync();
+            }
+          }
+        }
+
+        timerForm['start'].onclick = () => this.start();
+        timerForm['pause'].onclick = () => this.pause();
+        timerForm['reset'].onclick = () => this.reset();
+        timerForm['clear'].onclick = () => this.clear();
+      }
+
+      start() {
+        if (this.running) return;
+        this.endTime = new Date();
+        this.endTime.setSeconds(this.endTime.getSeconds() + this.timerValue);
+        this.running = true;
+      }
+
+      pause() {
+        if (!this.running) return;
+        this.running = false;
+        this.timerValue = Math.floor((this.endTime - new Date()) / 1000)
+        this.endTime = null;
+      }
+
+      reset() {
+        this.running = false;
+        this.endTime = null;
+        this.timerValue = this.resetTimerValue;
+        this.sync();
+      }
+
+      clear() {
+        this.timerValue = 0;
+        this.resetTimerValue = 0;
+        this.reset();
+      }
+
+      sync() {
+        let value = this.getExpectedClockValue()
+
+        if (this.running && value <= 0) {
+          this.running = false;
+          this.endTime = null;
+          this.timerValue = 0;
+          ringTimer(this.form.note.value);
+        }
+
+        let minutes = Math.floor(value / 60);
+        const seconds = Math.floor(value - (minutes * 60));
+        let hours = Math.floor(minutes / 60);
+        minutes -= (hours * 60);
+
+        this.flipClock.setDigits([
+          ...splitToDigits(hours),
+          ...splitToDigits(minutes),
+          ...splitToDigits(seconds),
+        ]
+        )
+      }
+
+      getExpectedClockValue() {
+        if (this.running && this.endTime) {
+          const diff = this.endTime - new Date();
+          if (diff < 0) return 0;
+          return diff / 1000;
+        }
+
+        return this.timerValue;
+      }
+
+
+    }
+
+    function splitToDigits(time) {
+      let [digit1, digit2] = time.toString().split('')
+      if (!digit2) {
+        digit2 = digit1;
+        digit1 = '0';
+      }
+
+      return [digit1, digit2];
+    }
+
     let chiming = false;
 
     function checkClock() {
       const now = new Date();
+
+      let hours = now.getHours();
+      const ampm = hours > 11 ? 'PM' : 'AM';
+      hours = hours % 12;
+
+      if (hours === 0) hours = 12;
       const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+
+      if (flipClock.initialized) {
+        flipClock.setDigits([
+          ...splitToDigits(hours),
+          ...splitToDigits(minutes),
+          ...splitToDigits(seconds),
+          ampm
+        ])
+      }
+
+      if (timer.running) timer.sync();
 
       if (minutes === 0 || minutes === 15 || minutes === 30 || minutes === 45) {
         if (chiming) return;
@@ -433,8 +972,6 @@
 
         if (minutes === 0) {
           if (!document.options.hourChime.checked) return;
-          let hours = now.getHours() % 12;
-          if (hours === 0) hours = 12;
           console.log("Chiming Hour", hours);
           ringHour(hours);
         } else {
@@ -450,7 +987,13 @@
     let masterGain;
     let reverbGain;
 
+    let flipClock;
+    let timer;
+    let initialized = false;
+
     function init() {
+      if (initialized) return;
+      initialized = true;
       setInterval(checkClock, 200);
 
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -501,6 +1044,9 @@
         E0: new Bell(rootFreq / 8, 0).connect(bellsGain)
       };
 
+      flipClock = new FlipClock(document.getElementById('flip-clock'));
+      timer = new Timer(document.getElementById('timer-flip-clock'), document.forms.timer);
+
       document.init.initialized.checked = true;
     }
 
@@ -541,6 +1087,15 @@
       }
     }
 
+    async function ringTimer(note) {
+      console.log("Ringing Timer")
+      await ring(note);
+      await sleep(quarterNoteLength * 6);
+      await ring(note);
+      await sleep(quarterNoteLength * 6);
+      await ring(note);
+    }
+
     function onKeyDown(e) {
       const note = keyCodeToNote[e.code];
       if (!note) return;
@@ -566,6 +1121,11 @@
       for (let element of document.hours.elements) {
         const hour = parseInt(element.name);
         element.onclick = () => ringHour(hour);
+      }
+
+      document.forms.timer.onclick = () => {
+        init();
+        timerWentOff = false;
       }
 
       document.init.init.onclick = () => init();
